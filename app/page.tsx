@@ -156,8 +156,10 @@ export default function Home() {
             alt="Mumma Approved Banner"
             style={{
               width: '100%',
-              height: '104%',
+              height: '100%',
               objectFit: 'cover',
+              objectPosition: isMobile ? '75% center' : 'center',
+              transform: isMobile ? 'scale(2.2)' : 'none',
             }}
           />
           {/* Gradient Overlay for Readability */}

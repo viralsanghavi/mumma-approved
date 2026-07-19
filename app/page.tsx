@@ -8,6 +8,7 @@ export default function Home() {
   const [isTablet, setIsTablet] = useState(false);
   const [tiltX, setTiltX] = useState(0);
   const [tiltY, setTiltY] = useState(0);
+  const [showAllEpisodes, setShowAllEpisodes] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -777,7 +778,9 @@ export default function Home() {
             { num: '25', link: 'https://youtu.be/Hm1SLSQk3Qs' },
             { num: '26', link: 'https://youtu.be/EBKbZClJ79w' },
             { num: '27', link: 'https://youtu.be/cDkkROJ24sA' },
-          ].map((ep, i) => (
+          ]
+          .slice(0, showAllEpisodes ? undefined : 8)
+          .map((ep, i) => (
             <a
               key={i}
               href={ep.link}
@@ -807,6 +810,13 @@ export default function Home() {
                 (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
               }}
             >
+              <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: '12px', overflow: 'hidden', marginBottom: '16px', background: '#F0E3D8', position: 'relative' }}>
+                <img
+                  src={`https://img.youtube.com/vi/${ep.link.split('/').pop()}/hqdefault.jpg`}
+                  alt={`Episode ${ep.num}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6E6E73', fontWeight: 600 }}>
                   YouTube
@@ -835,6 +845,41 @@ export default function Home() {
               </div>
             </a>
           ))}
+          </div>
+
+          {/* View All Button */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px', position: 'relative', zIndex: 2 }}>
+            <button
+              onClick={() => setShowAllEpisodes(!showAllEpisodes)}
+              style={{
+                background: 'transparent',
+                border: '1.5px solid rgba(58, 30, 44, 0.35)',
+                color: '#3A1E2C',
+                padding: '14px 28px',
+                borderRadius: '100px',
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = '#A85848';
+                (e.currentTarget as HTMLElement).style.color = '#A85848';
+                (e.currentTarget as HTMLElement).style.background = 'rgba(168, 88, 72, 0.05)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(58, 30, 44, 0.35)';
+                (e.currentTarget as HTMLElement).style.color = '#3A1E2C';
+                (e.currentTarget as HTMLElement).style.background = 'transparent';
+              }}
+            >
+              {showAllEpisodes ? 'View Less' : 'View All Episodes'}
+              <span style={{ transform: showAllEpisodes ? 'rotate(-90deg)' : 'rotate(90deg)', transition: 'transform 0.3s', display: 'inline-block' }}>→</span>
+            </button>
           </div>
         </div>
       </section>

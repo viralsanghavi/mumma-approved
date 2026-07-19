@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { AsymmetricalGrid, GridItem } from '@/components/layouts/AsymmetricalGrid'
 
 export function EpisodeShowcase() {
+  const [showAll, setShowAll] = useState(false)
   const episodes = [
     {
       number: 'EP 47',
@@ -47,7 +48,51 @@ export function EpisodeShowcase() {
       duration: '41 min',
       topic: 'Child Development',
     },
+    {
+      number: 'EP 41',
+      title: 'Navigating Postpartum Changes',
+      guest: 'with Dr. Riya Kapoor',
+      duration: '48 min',
+      topic: 'Mental Health',
+    },
+    {
+      number: 'EP 40',
+      title: 'Raising Boys with Empathy',
+      guest: 'with Sara Thomas',
+      duration: '39 min',
+      topic: 'Child Development',
+    },
+    {
+      number: 'EP 39',
+      title: 'The Invisible Mental Load',
+      guest: 'with Nisha Gupta',
+      duration: '44 min',
+      topic: 'Partnership',
+    },
+    {
+      number: 'EP 38',
+      title: 'Building a Support Village',
+      guest: 'with Community Panel',
+      duration: '50 min',
+      topic: 'Community',
+    },
+    {
+      number: 'EP 37',
+      title: 'Nutrition for Busy Moms',
+      guest: 'with Simran Kaur',
+      duration: '36 min',
+      topic: 'Health',
+    },
+    {
+      number: 'EP 36',
+      title: 'Financial Planning for Families',
+      guest: 'with Anita Desai',
+      duration: '43 min',
+      topic: 'Finance',
+    },
   ]
+
+  const displayedEpisodes = showAll ? episodes : episodes.slice(0, 9)
 
   return (
     <section className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-white via-rose-50/20 to-white">
@@ -64,7 +109,7 @@ export function EpisodeShowcase() {
 
         {/* Episodes Grid - Asymmetrical layout */}
         <AsymmetricalGrid>
-          {episodes.map((episode, idx) => (
+          {displayedEpisodes.map((episode, idx) => (
             <GridItem
               key={idx}
               colSpan={idx === 0 ? 'two-thirds' : idx === 1 ? 'third' : idx === 2 ? 'third' : idx === 3 ? 'half' : 'third'}
@@ -125,12 +170,17 @@ export function EpisodeShowcase() {
         </AsymmetricalGrid>
 
         {/* View All CTA */}
-        <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
-          <button className="inline-flex items-center gap-2 px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all duration-300">
-            View All Episodes
-            <span>→</span>
-          </button>
-        </div>
+        {episodes.length > 9 && (
+          <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <button 
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all duration-300"
+            >
+              {showAll ? 'View Less' : 'View All Episodes'}
+              <span className={`transform transition-transform duration-300 ${showAll ? '-rotate-90' : 'rotate-90'}`}>→</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

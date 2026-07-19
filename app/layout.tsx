@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     title: 'Mumma Approved - Parenting Conversations',
     description: 'Expert parenting podcast for modern Indian mothers.',
     type: 'website',
-    url: 'https://mummaapproved.com',
+    url: 'https://mumma-approved.vercel.app',
     images: [
       {
-        url: 'https://mummaapproved.com/og-image.png',
+        url: 'https://mumma-approved.vercel.app/og-image.png',
         width: 1200,
         height: 630,
       },

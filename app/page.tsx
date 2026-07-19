@@ -86,10 +86,10 @@ export default function Home() {
           Mumma Approved
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '8px' : '36px', flexWrap: isMobile ? 'wrap' : 'nowrap', justifyContent: isMobile ? 'center' : 'flex-end', width: isMobile ? '100%' : 'auto' }}>
-          {['About', 'Episodes', 'Topics', 'Listen'].map((link) => (
+          {['About', 'Episodes', 'Topics', 'The Silent Room', 'Listen'].map((link) => (
             <a
               key={link}
-              href={`#${link.toLowerCase()}`}
+              href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
               style={{
                 fontSize: isMobile ? '11px' : '13px',
                 fontWeight: 500,
@@ -807,11 +807,13 @@ export default function Home() {
                 (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
               }}
             >
-              <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6E6E73', fontWeight: 600, marginBottom: '12px' }}>
-                Episode {ep.num}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                <div style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6E6E73', fontWeight: 600 }}>
+                  YouTube
+                </div>
               </div>
-              <h3 style={{ fontFamily: 'var(--ff-serif)', fontWeight: 400, lineHeight: 1.25, color: '#2C2C2C', marginBottom: 'auto', fontSize: '14px' }}>
-                Watch on YouTube
+              <h3 style={{ fontFamily: 'var(--ff-serif)', fontWeight: 400, lineHeight: 1.25, color: '#2C2C2C', marginBottom: 'auto', fontSize: '18px' }}>
+                Episode {ep.num}
               </h3>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: '16px' }}>
                 <div
@@ -980,17 +982,14 @@ export default function Home() {
             Meet <em style={{ fontStyle: 'italic', color: '#E596AC' }}>Sneha</em>
           </h2>
           <p style={{ fontSize: isMobile ? '13px' : '15px', fontWeight: 400, lineHeight: 1.85, color: 'rgba(240, 227, 216, 0.92)', marginBottom: '20px' }}>
-            Sneha Jhaveri is a mum with the same questions you have. About her kids, their health, their food, their schools, their wellbeing. Like most of us, she was googling at midnight and getting half answers.
+            I wanted a space where mothers could find real clarity in the chaos of parenting. So I created Mumma Approved to bring expert voices directly to you.
           </p>
           <p style={{ fontSize: isMobile ? '13px' : '15px', fontWeight: 400, lineHeight: 1.85, color: 'rgba(240, 227, 216, 0.92)', marginBottom: '20px' }}>
-            So she created Mumma Approved to get real answers from real experts. Doctors, nutritionists, educators, wellness professionals — the people you wish you had on speed dial. Because every mum deserves good information. Not just the lucky ones who know the right people.
-          </p>
-          <p style={{ fontSize: isMobile ? '13px' : '15px', fontWeight: 400, lineHeight: 1.85, color: 'rgba(240, 227, 216, 0.92)', marginBottom: '20px' }}>
-            Through Mumma Approved, she celebrates the complexity of modern motherhood and creates space for meaningful conversations.
+            As a mother and an entrepreneur, I believe every mum deserves good information, deeply researched and simply explained. Through Mumma Approved, I hope to celebrate the complexity of modern motherhood and create space for meaningful conversations.
           </p>
           <div style={{ width: '60px', height: '2px', background: '#7CB342', margin: '36px 0', opacity: 0.6 }} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {['Founder at Vous', 'Podcast creator', 'Mother of two'].map((trait, i) => (
+            {['Podcast creator', 'Mother of two'].map((trait, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '14px', color: 'rgba(240, 227, 216, 0.88)', letterSpacing: '0.02em', fontWeight: 400 }}>
                 <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7CB342', flexShrink: 0 }} />
                 {trait}
@@ -1002,6 +1001,7 @@ export default function Home() {
 
       {/* The Silent Room Section */}
       <section
+        id="the-silent-room"
         style={{
           padding: isMobile ? '80px 16px' : isTablet ? '100px 40px' : '120px 60px',
           background: '#FDFDFD',
@@ -1088,7 +1088,7 @@ export default function Home() {
           </p>
 
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScm6vKsk_X_mOtqRwfDNY3mrILMn02PokUx46bAK9qwAqJKjw/viewform?fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPMTI0MDI0NTc0Mjg3NDE0AAGnCjiggJrz7dUW2dtX4SfNo6_dnji_iPfe4o4HJRVxu-D7uuFItFJUyJn6-rM_aem_s7ON_Ctzfg6EjiN8MpqPLQ"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScm6vKsk_X_mOtqRwfDNY3mrILMn02PokUx46bAK9qwAqJKjw/viewform"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -1191,7 +1191,7 @@ export default function Home() {
         >
           {[
             { quote: 'This podcast made me feel less alone in my journey.', name: 'Deepa M.', handle: '@deepa_mum' },
-            { quote: 'Ananya asks the questions I&apos;ve always wanted to ask.', name: 'Priya K.', handle: '@priya_khanna' },
+            { quote: 'Sneha asks the questions I\'ve always wanted to ask.', name: 'Priya K.', handle: '@priya_khanna' },
             { quote: 'Every episode is like a therapy session with a friend.', name: 'Meera R.', handle: '@meera_roy' },
           ].map((testi, i) => (
             <div
@@ -1286,7 +1286,7 @@ export default function Home() {
 
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '60px' }}>
             {[
-              { name: 'Spotify', url: 'https://open.spotify.com/show/2tTeZzm1OgahEiG6wB3TGA' },
+              { name: 'Spotify', url: 'https://open.spotify.com/show/mummaapproved' },
               { name: 'Amazon Music', url: 'https://music.amazon.com/podcasts/46788741-bca0-4f74-9853-946dc2b3bbdc/mumma-approved' },
               { name: 'Apple Music', url: 'https://podcasts.apple.com/th/podcast/mumma-approved/id1827663192' },
               { name: 'YouTube Music', url: 'https://music.youtube.com/playlist?list=PLRRHCbP-xx8M1aRXfxYf07Bk3p8PUJcxc&si=umCeSQTs4prNbudg' },
@@ -1339,29 +1339,14 @@ export default function Home() {
 
 
       {/* Footer */}
-      <footer style={{ padding: isMobile ? '40px 16px' : isTablet ? '50px 40px' : '60px',             background: '#3A2520', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : '2fr 1fr 1fr 1fr', gap: isMobile ? '40px' : isTablet ? '40px' : '60px', color: 'rgba(240, 227, 216, 0.7)', fontSize: isMobile ? '13px' : '14px', lineHeight: 1.8 }}>
+      <footer style={{ padding: isMobile ? '40px 16px' : isTablet ? '50px 40px' : '60px',             background: '#3A2520', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr' : '2fr 1fr', gap: isMobile ? '40px' : isTablet ? '40px' : '60px', color: 'rgba(240, 227, 216, 0.7)', fontSize: isMobile ? '13px' : '14px', lineHeight: 1.8 }}>
         <div style={{ gridColumn: isMobile ? '1 / -1' : 'auto' }}>
           <h3 style={{ fontFamily: 'var(--ff-serif)', fontSize: isMobile ? '16px' : '18px', color: '#FAF7F2', marginBottom: '16px', fontWeight: 300 }}>
             Mumma Approved
           </h3>
-          <p style={{ fontSize: isMobile ? '13px' : '14px', color: 'rgba(240, 227, 216, 0.7)', lineHeight: 1.8 }}>
+          <p style={{ fontSize: isMobile ? '13px' : '14px', color: 'rgba(240, 227, 216, 0.7)', lineHeight: 1.8, maxWidth: '400px' }}>
             A podcast celebrating modern motherhood through authentic conversations and real stories.
           </p>
-        </div>
-
-        <div style={{ gridColumn: isMobile ? '1 / -1' : 'auto' }}>
-          <h4 style={{ fontSize: isMobile ? '11px' : '13px', fontWeight: 600, color: '#FAF7F2', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
-            Episodes
-          </h4>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {['Latest', 'Archive', 'Topics'].map((link) => (
-              <li key={link}>
-                <a href="#" style={{ color: 'rgba(240, 227, 216, 0.7)', textDecoration: 'none', transition: 'color 0.2s', fontSize: isMobile ? '12px' : '14px' }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#A07828')} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240, 227, 216, 0.7)')}>
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div style={{ gridColumn: isMobile ? '1 / -1' : 'auto' }}>
@@ -1382,43 +1367,10 @@ export default function Home() {
           </ul>
         </div>
 
-        <div style={{ gridColumn: isMobile ? '1 / -1' : 'auto' }}>
-          <h4 style={{ fontSize: isMobile ? '11px' : '13px', fontWeight: 600, color: '#FAF7F2', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>
-            Legal
-          </h4>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {['Privacy', 'Terms', 'Contact'].map((link) => (
-              <li key={link}>
-                <a href="#" style={{ color: 'rgba(240, 227, 216, 0.7)', textDecoration: 'none', transition: 'color 0.2s', fontSize: isMobile ? '12px' : '14px' }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#A07828')} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240, 227, 216, 0.7)')}>
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div style={{ gridColumn: isMobile ? '1 / -1' : '1 / -1', borderTop: '1px solid rgba(160, 120, 40, 0.2)', paddingTop: isMobile ? '30px' : '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? '20px' : '0' }}>
+        <div style={{ gridColumn: '1 / -1', borderTop: '1px solid rgba(160, 120, 40, 0.2)', paddingTop: isMobile ? '30px' : '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <p style={{ fontSize: isMobile ? '11px' : '13px', color: 'rgba(240, 227, 216, 0.5)' }}>
-            © 2024 Mumma Approved. All rights reserved.
+            © {new Date().getFullYear()} Mumma Approved. All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: isMobile ? '16px' : '20px' }}>
-            {['Facebook', 'Twitter', 'Instagram'].map((social) => (
-              <a
-                key={social}
-                href="#"
-                style={{
-                  fontSize: isMobile ? '11px' : '13px',
-                  color: 'rgba(240, 227, 216, 0.5)',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#A07828')}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240, 227, 216, 0.5)')}
-              >
-                {social}
-              </a>
-            ))}
-          </div>
         </div>
       </footer>
     </div>

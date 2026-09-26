@@ -445,9 +445,21 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <p className={`${CONTAINER} mt-12 border-t border-white/10 pt-6 text-center text-sm`}>
-            © {new Date().getFullYear()} Mumma Approved. All rights reserved.
-          </p>
+          <div className={`${CONTAINER} mt-12 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-sm sm:flex-row`}>
+            <p>© {new Date().getFullYear()} Mumma Approved. All rights reserved.</p>
+            <p>
+              Website by{' '}
+              <a
+                href="https://www.instagram.com/noerr_tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-on-plum underline-offset-4 transition-colors hover:text-brand hover:underline"
+              >
+                <BrandIcon name="Instagram" className="size-3.5" />
+                noerrtech
+              </a>
+            </p>
+          </div>
         </footer>
       </div>
     </PlayerProvider>

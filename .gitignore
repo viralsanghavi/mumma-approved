@@ -15,3 +15,11 @@ node_modules
 .next/
 .DS_Store
 .vercel
+
+# AI Assistant files
+.gemini
+.gemini/
+.agents/
+.claude/
+.cline/
+.cursor/
